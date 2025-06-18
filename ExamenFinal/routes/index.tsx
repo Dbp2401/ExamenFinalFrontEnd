@@ -30,6 +30,7 @@ const home = (data: DataProps) => {
             {c.image ? <img src={c.image}></img> : <img src="image.png"></img>}
           </a>
           <a href={`/character/${c.id}`}>{c.name}</a>
+          <br />
           <FavButton name={c!.name} />
         </div>
       ))}

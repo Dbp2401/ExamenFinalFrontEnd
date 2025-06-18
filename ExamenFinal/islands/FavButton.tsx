@@ -11,15 +11,22 @@ export default function AddFavoriteButton({ name }: { name: string }) {
     if (!list.includes(name)) {
       list.push(name);
       document.cookie = `favorites=${list.join(",")}; path=/;`;
-      alert("Añadido a favoritos");
       setAdded(true);
     } else {
-      alert("Ya estaba añadido");
+      const eliminated = list.find((p) => p.startsWith(name));
+      const pos = list.indexOf(String(eliminated));
+      list.splice(pos, 1);
+      document.cookie = `favorites=${list.join(",")}; path=/;`;
+      setAdded(false);
     }
   }
   return (
-    <button type="button" onClick={addToFavorites} disabled={added}>
-      {added ? "Añadido" : "Añadir a favoritos"}
-    </button>
+    <span onClick={addToFavorites}>
+      {
+        added
+          ? "★Quitar de favoritos"
+          : "★Añadir a favoritos" /*deberia hacerse con middleware, pero no me da tiempo*/
+      }
+    </span>
   );
 }

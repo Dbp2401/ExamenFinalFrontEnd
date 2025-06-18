@@ -57,6 +57,10 @@ img {
     object-fit: cover;
     border-radius: 50px;
   }
+  a {
+    text-decoration: underline;
+    color: blue;
+  }
 }
 
 .header {

@@ -27,7 +27,7 @@ export default function FavoritesPage() {
     <div class="grid">
       {favorites.map((c: character) => (
         <div class="card">
-          <img src={c.image}></img>
+          {c.image ? <img src={c.image}></img> : <img src="image.png"></img>}
           <p>{c.name}</p> <FavButton name={c!.name} />
         </div>
       ))}

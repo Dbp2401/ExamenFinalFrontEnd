@@ -16,9 +16,12 @@ export const handler: Handlers = {
 const characterPage = ({ data }: { data: character }) => {
   return (
     <div class="detail">
-      <img src={data.image}></img>
+      {data.image ? (
+        <img src={data.image}></img>
+      ) : (
+        <img src="../image.png"></img>
+      )}
       <h2>{data.name}</h2>
-      {/* <span class="star fav">★</span> */}
       <FavButton name={data!.name} />
       <p>Casa: {data.house}</p>
       {data.alive ? <p>Vivo</p> : <p>Muerto</p>}
